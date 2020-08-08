@@ -10,6 +10,8 @@ class RegistroForm extends StatefulWidget {
 }
 
 class _RegistroFormState extends State<RegistroForm> {
+  final _formKey = GlobalKey<FormState>();
+
   DateTime _fechaNacimientoSeleccionada;
 
   @override
@@ -21,25 +23,27 @@ class _RegistroFormState extends State<RegistroForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Registro'),
-        leading: Icon(MdiIcons.login),
-      ),
-      body: Form(
+        body: Container(
+      padding: EdgeInsets.all(25),
+      child: Form(
+        key: _formKey,
         child: Padding(
           padding: EdgeInsets.all(8.0),
           child: ListView(
             children: <Widget>[
+              Center(
+                child: Text('Registro de usuarios',
+                    style: TextStyle(color: Colors.black, fontSize: 20)),
+              ),
               _crearCampoEmail(),
               _crearCampoNombres(),
               _crearCampoApellidoPaterno(),
               _crearCampoTelefono(),
-              Divider(),
               _crearCampoFechaNacimiento(),
               Container(
                 child: RaisedButton(
-                  color: Color(blue),
-                  child: Text('Registrarse'),
+                  color: Theme.of(context).primaryColor,
+                  child: Text('Registrarse', style: TextStyle(fontSize: 18)),
                   onPressed: () => _registrarse(),
                 ),
               ),
@@ -47,21 +51,35 @@ class _RegistroFormState extends State<RegistroForm> {
           ),
         ),
       ),
-    );
+    ));
   }
 
-  void _registrarse(){};
+  void _registrarse() {
+    if (_formKey.currentState.validate()) {}
+  }
 
   Widget _crearCampoEmail() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(labelText: 'E-mail'),
+      validator: (valor) {
+        if (valor.isEmpty) {
+          return 'Indique e-mail';
+        }
+        return null;
+      },
     );
   }
 
   Widget _crearCampoNombres() {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Nombres'),
+      validator: (valor) {
+        if (valor.isEmpty) {
+          return 'Indique nombres';
+        }
+        return null;
+      },
     );
   }
 
@@ -97,13 +115,24 @@ class _RegistroFormState extends State<RegistroForm> {
 
   Widget _crearCampoApellidoPaterno() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Apellido Materno'),
+      decoration: InputDecoration(labelText: 'Apellido Paterno'),
+      validator: (valor) {
+        if (valor.isEmpty != null) {
+          return 'Ingrese Apellido Paterno';
+        }
+        return null;
+      },
     );
   }
 
   Widget _crearCampoTelefono() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Teléfono'),
-    );
+        decoration: InputDecoration(labelText: 'Teléfono'),
+        validator: (valor) {
+          if (valor.isEmpty != null) {
+            return 'Ingrese Teléfono';
+          }
+          return null;
+        });
   }
 }

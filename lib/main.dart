@@ -17,6 +17,11 @@ class MyApp extends StatelessWidget {
       ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primaryColor: Color(0xff50d890),
+        secondaryHeaderColor: Color(0xff4f98ca),
+        splashColor: Color(0xffeffffb),
+        primaryColorDark: Color(0xff42b377),
+        primaryColorLight: Color(0xffeffffb),
         fontFamily: 'Source Sans Pro',
         textTheme: TextTheme(
             headline1: TextStyle(
