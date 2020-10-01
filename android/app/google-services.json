@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "743035968005",
+    "firebase_url": "https://flutter-notes-list.firebaseio.com",
+    "project_id": "flutter-notes-list",
+    "storage_bucket": "flutter-notes-list.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743035968005:android:9d4fbccabeb3bf43125a6c",
+        "android_client_info": {
+          "package_name": "com.benjamincaceres.noteslist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "743035968005-cqnraheo9uttmmhnujmv3tbiocd0pc7n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwvDk3XrbJAuJiTuopeuDVQHut4rPqCg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "743035968005-cqnraheo9uttmmhnujmv3tbiocd0pc7n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
