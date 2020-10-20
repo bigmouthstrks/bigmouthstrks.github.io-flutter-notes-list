@@ -9,7 +9,7 @@ class Directioner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final usuario = Provider.of<FirebaseUser>(context);
+    final usuario = Provider.of<User>(context);
 
     return usuario == null ? LoginForm() : Home();
   }

@@ -20,24 +20,6 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: _setTitle(_currentIndex),
-        actions: <Widget>[
-          PopupMenuButton<String>(
-            onSelected: handleClick,
-            itemBuilder: (BuildContext context) => [
-              PopupMenuItem(
-                value: 'Acerca de',
-                child: Text('Acerca de'),
-              ),
-              PopupMenuItem(
-                value: 'Salir',
-                child: Text('Salir'),
-              ),
-            ],
-          ),
-        ],
-      ),
       body: Center(
         child: _navegar(_currentIndex),
       ),
@@ -105,33 +87,12 @@ class HomeState extends State<Home> {
     }
   }
 
+  void _showDialog() {
+    print('Se muestra mensaje de "Acerca de"');
+  }
+
   void _cerrarSesion() {
     AuthService authService = AuthService();
     authService.cerrarSesionUsuario();
-  }
-
-  void _showDialog() {
-    // flutter defined function
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        // return object of type Dialog
-        return AlertDialog(
-          title: Text("Acerca de 'Notes List'",
-              style: TextStyle(color: Theme.of(context).accentColor)),
-          content: Text(
-              "Ésta aplicación fue creada por: Benjamín Cáceres Ramírez, estudiante de TUI de la USM Viña del Mar."),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            FlatButton(
-              child: Text("Cerrar"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
   }
 }

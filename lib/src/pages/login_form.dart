@@ -58,8 +58,10 @@ class _LoginFormState extends State<LoginForm> {
                           children: <Widget>[
                             RaisedButton(
                               color: Theme.of(context).secondaryHeaderColor,
-                              child: Text('Registrarme',
-                                  style: TextStyle(fontSize: 18)),
+                              child: Text(
+                                'Registrarme',
+                                style: TextStyle(fontSize: 18),
+                              ),
                               onPressed: () {
                                 final route = MaterialPageRoute(
                                     builder: (context) => RegistroForm());
@@ -68,8 +70,10 @@ class _LoginFormState extends State<LoginForm> {
                             ),
                             RaisedButton(
                               color: Theme.of(context).primaryColor,
-                              child: Text('Entrar',
-                                  style: TextStyle(fontSize: 18)),
+                              child: Text(
+                                'Entrar',
+                                style: TextStyle(fontSize: 18),
+                              ),
                               onPressed: () => _iniciarSesion(),
                             ),
                           ],

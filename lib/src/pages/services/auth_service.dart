@@ -4,16 +4,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  Stream<FirebaseUser> get usuario {
-    return _firebaseAuth.onAuthStateChanged;
+  Stream<User> get usuario {
+    return _firebaseAuth.authStateChanges();
   }
 
   // Crear usuarios
   Future crearUsuario(String email, String password) async {
     try {
-      AuthResult authResult = await _firebaseAuth
+      UserCredential authResult = await _firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
-      FirebaseUser firebaseUser = authResult.user;
+      User firebaseUser = authResult.user;
       SharedPreferences sp = await SharedPreferences.getInstance();
       sp.setStringList('user', [firebaseUser.uid, firebaseUser.email]);
       return firebaseUser;
@@ -28,9 +28,9 @@ class AuthService {
   // Login
   Future iniciarSesionUsuario(String email, String password) async {
     try {
-      AuthResult authResult = await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
-      FirebaseUser firebaseUser = authResult.user;
+      UserCredential authResult = await _firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password);
+      User firebaseUser = authResult.user;
       SharedPreferences sp = await SharedPreferences.getInstance();
       sp.setStringList('user', [firebaseUser.uid, firebaseUser.email]);
       return firebaseUser;
